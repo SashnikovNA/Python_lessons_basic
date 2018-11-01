@@ -6,16 +6,19 @@
 # Пример: Дано: [2, -5, 8, 9, -25, 25, 4]   Результат: [3, 5, 2]
 
 import math
-start_list = [3,55,723, -342, -2, 45, 1, 0]
-for numb in start_list:
-    if numb >=0:
-    numb = math.sqrt(numb)
-print(start_list)
-
-
-
-
-
+start_list = [3, 9, 25, -342, -2, 45, 1, 0]
+sqrt_list = []
+int_sqrt_list = []
+for i in start_list:
+    if i > 0:
+      sqrt_i = math.sqrt(i)
+      sqrt_list.append(sqrt_i)
+for j in sqrt_list:
+  if (j).is_integer():
+    int_sqrt_list.append(int(j))
+ 
+print("Исходный список ", start_list)   
+print("Итоговый список целых корней :",int_sqrt_list)
 
 # Задача-2: Дана дата в формате dd.mm.yyyy, например: 02.11.2013.
 # Ваша задача вывести дату в текстовом виде, например: второе ноября 2013 года.
