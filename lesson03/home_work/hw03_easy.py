@@ -51,10 +51,20 @@ print(my_round(2.9999967, 3))
 # Билет считается счастливым, если сумма его первых и последних цифр равны.
 # !!!P.S.: функция не должна НИЧЕГО print'ить
 
+print("\n Задание 2 \n")
 def lucky_ticket(ticket_number):
-    pass
-
-
-print(lucky_ticket(123006))
-print(lucky_ticket(12321))
+  ticket_list = list(str(ticket_number)) # Делаем список, чтобы по индексам операции делать
+  left_part_summ = sum(int(i) for i in ticket_list[0:3])
+  # Cумма левой части
+  right_part_summ = sum(int(i) for i in ticket_list[3:6])
+  # Cумма правой части
+  if left_part_summ == right_part_summ:
+    return True
+  else:
+    return False
+# Раз уж нельзя ничего принтить функцией, то пусть Булева логика сделает своё дело :-)
+ 
+print(lucky_ticket(123333))
+print(lucky_ticket(123213))
 print(lucky_ticket(436751))
+print(lucky_ticket(446751))
