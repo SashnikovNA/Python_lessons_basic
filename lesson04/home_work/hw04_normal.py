@@ -4,6 +4,8 @@
 # Т.е. из строки "mtMmEZUOmcq" нужно получить ['mt', 'm', 'mcq']
 # Решить задачу двумя способами: с помощью re и без.
 
+import re
+
 line = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysmNO'\
        'GIPHpEMujalpPLNzRWXfwHQqwksrFeipEUlTLeclMwAoktKlfUBJHPsnawvjPhfgewVzK'\
        'TUfSYtBydXaVIpxWjNKgXANvIoumesCSSvjEGRJosUfuhRRDUuTQwLlJJJDdkVjfSAHqn'\
@@ -19,6 +21,16 @@ line = 'mtMmEZUOmcqWiryMQhhTxqKdSTKCYEJlEZCsGAMkgAYEOmHBSQsSUHKvSfbmxULaysmNO'\
        'qHFjvihuNGEEFsfnMXTfptvIOlhKhyYwxLnqOsBdGvnuyEZIheApQGOXWeXoLWiDQNJFa'\
        'XiUWgsKQrDOeZoNlZNRvHnLgCmysUeKnVJXPFIzvdDyleXylnKBfLCjLHntltignbQoiQ'\
        'zTYwZAiRwycdlHfyHNGmkNqSwXUrxGc'
+
+print("Задание-1")
+
+low_btw_up = re.findall(r'([^A-Z]+)',line)
+
+# Выражение [^A-Z] исключает все буквы верхнего регистра,
+# а "+" указывает, что они не одиночные, а могут идти подряд 1 и более раз. 
+# Для данного списка подходит, т.к. в нем нет цифр и заданное условие задачи выполняется
+
+print ("Символы нижнего регистра, найденные программой : \n" , low_btw_up)
 
 
 # Задание-2:
