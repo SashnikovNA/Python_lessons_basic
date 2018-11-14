@@ -64,3 +64,60 @@ print("Периметр треуголика: ", '%.2f' % real_triang.perimeter)
 # проверка, является ли фигура равнобочной трапецией;
 # вычисления: длины сторон, периметр, площадь.
 
+print("Задача 2")
+import math
+
+
+#Во второй задаче пробую использовать родительский класс и поглядеть на наследование
+# + упростить атрибуты, точнее их кол-во на входе (теперь это не каждая отдельная точка, а группы координат)
+
+#
+class figure:
+    def __init__(self):
+        pass
+    def storona(self,t1,t2):
+        return math.sqrt((int(t1[0])- int(t2[0]))**2 + (int(t1[1]) - int(t2[1]))**2)
+
+
+class Trapec(figure):
+    def __init__(self, A, B, C, D):
+        self.A = A
+        self.B = B
+        self.C = C
+        self.D = D
+        self.AB = self.storona(self.A, self.B)
+        self.BC = self.storona(self.B, self.C)
+        self.CD = self.storona(self.C, self.D)
+        self.AD = self.storona(self.A, self.D)
+
+    # @property - позволяет обращаться к методу как к атрибуту
+    # Если я правильно понял, то это позволяет без призыва метода для объекта сразу пулять его в принт, как атрибут :)
+
+    @property
+    def isravnob(self):
+        if self.storona(self.A, self.C) == self.storona(self.B, self.D):
+            return True
+        else:
+            return False
+
+    @property
+    def Ploschad(self):
+        if self.isravnob:
+            S = ((self.BC + self.AD) / 2) * math.sqrt(self.AB ** 2 - ((self.BC - self.AD) ** 2) / 4)
+            return S
+        else:
+            print('Трапеция не равнобедренная')
+            return 0
+
+    @property
+    def Perimetr(self):
+        return self.AB + self.BC + self.CD + self.AD
+
+
+real_trap = Trapec((1, 1), (2, 6), (5, 6), (6, 1))
+if real_trap.isravnob:
+    print('Трапеция равнобедренная')
+else:
+    print('Трапеция НЕ равнобедренная')
+print('Периметр трапеции: ', str( '%.2f' % real_trap.Perimetr))
+print('Площадь трапеции: ', str( '%.2f' % real_trap.Ploschad))
